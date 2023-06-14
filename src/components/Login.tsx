@@ -2,13 +2,13 @@
 
 import React from "react";
 import { useTranslations } from "next-intl";
-import { getCodeAPI } from "@/app/[locale]/api/routes";
 const Login = () => {
   const t = useTranslations("Home");
 
   const handleAPI = async () => {
-    const response = await getCodeAPI();
-    console.log(response);
+    await fetch("http://localhost:3000/api/apiCode")
+      .then((res) => res.json())
+      .then((data) => (window.location.href = data.message));
   };
 
   return (
