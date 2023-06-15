@@ -1,8 +1,17 @@
 "use client";
+import { createContext, useContext, useState, PropsWithChildren } from "react";
 
-import { createContext, useContext, useEffect, useState, useMemo } from "react";
-
-const ApiContext = createContext({});
+type User = {
+  [key: string]: any;
+};
+type apiProps = {
+  getAccessToken: () => void;
+  user: User;
+};
+const ApiContext = createContext<apiProps>({
+  user: {},
+  getAccessToken: () => {},
+});
 
 export const useApiContext = () => {
   const context = useContext(ApiContext);
@@ -12,7 +21,7 @@ export const useApiContext = () => {
   return context;
 };
 
-export function ApiProvider({ children }) {
+export function ApiProvider({ children }: PropsWithChildren) {
   const [user, setUser] = useState<string>();
 
   const getAccessToken = async () => {
@@ -36,7 +45,7 @@ export function ApiProvider({ children }) {
             },
           });
           const userData = await getUser.json();
-          console.log(userData);
+          setUser(userData);
         }
       } else {
         console.error("Error from post get token");

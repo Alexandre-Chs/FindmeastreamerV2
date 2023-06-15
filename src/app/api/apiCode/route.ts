@@ -26,7 +26,7 @@ export async function POST(request: Request) {
     params.append("grant_type", process.env.GRANT_TYPE);
     params.append("redirect_uri", process.env.REDIRECT_URI);
   } else {
-    console.error(".env not defined");
+    console.error(".env not defined or missing .env element");
   }
 
   const response = await fetch("https://id.twitch.tv/oauth2/token", {
