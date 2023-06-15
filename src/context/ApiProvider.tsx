@@ -6,11 +6,11 @@ type User = {
 };
 type apiProps = {
   getAccessToken: () => void;
-  user: User;
+  user: User | null;
 };
 const ApiContext = createContext<apiProps>({
-  user: {},
-  getAccessToken: () => {},
+  getAccessToken: () => undefined,
+  user: null,
 });
 
 export const useApiContext = () => {
