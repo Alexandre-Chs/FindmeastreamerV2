@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { NextIntlClientProvider } from "next-intl";
 import "./globals.css";
 import { Roboto } from "next/font/google";
+import { ApiProvider } from "@/context/ApiProvider";
 
 const roboto = Roboto({
   weight: ["100", "300", "400", "500", "700"],
@@ -34,9 +35,11 @@ export default async function RootLayout({
   return (
     <html lang={locale}>
       <body className={`${roboto.className} bg-[#17181C] text-white`}>
-        <NextIntlClientProvider locale={locale} messages={messages}>
-          {children}
-        </NextIntlClientProvider>
+        <ApiProvider>
+          <NextIntlClientProvider locale={locale} messages={messages}>
+            {children}
+          </NextIntlClientProvider>
+        </ApiProvider>
       </body>
     </html>
   );
