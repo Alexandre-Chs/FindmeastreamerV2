@@ -8,7 +8,6 @@ const WrapperNav = () => {
       <div>Findmeastreamer</div>
       <nav className="flex items-center justify-center">
         <Languages />
-        <Login />
       </nav>
     </header>
   );
