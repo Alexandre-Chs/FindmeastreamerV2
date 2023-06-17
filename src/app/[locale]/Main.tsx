@@ -17,10 +17,7 @@ const Main = () => {
           {t("chooseRoom")}
         </p>
         <div className="flex flex-col items-center justify-center gap-2 mt-2 xs:flex-row">
-          <a className="cursor-pointer">English</a>
-          <a className="cursor-pointer">Français</a>
-          <a className="cursor-pointer">Español</a>
-          <a className="cursor-pointer">한국어</a>
+          <a href="/room">Let's discover new streamers ! </a>
         </div>
       </div>
       <div className="px-2 py-4 mt-8 border-2 rounded-xl border-[#6441a5] sm:mt-10 sm:px-4 xs:min-w-[350px] sm:min-w-[600px]">
