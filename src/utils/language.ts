@@ -1,4 +1,4 @@
-export const languages = ["en", "fr", "es", "kr"];
+export const languages = ["en", "fr", "es", "ko"];
 
 export const textLang = (lang: string) => {
   switch (lang) {
@@ -6,7 +6,7 @@ export const textLang = (lang: string) => {
       return "Français";
     case "es":
       return "Español";
-    case "kr":
+    case "ko":
       return "한국어";
     default:
       return "English";

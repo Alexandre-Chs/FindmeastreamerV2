@@ -31,7 +31,7 @@ const SelectRoomLang = (page: typePageProps) => {
         locale="en"
         className="hover:bg-[#7f5fb95c] w-full pl-2 pr-2"
       >
-        Anglais
+        English
       </Link>
       <Link
         href={urlLang}
@@ -42,7 +42,7 @@ const SelectRoomLang = (page: typePageProps) => {
       </Link>
       <Link
         href={urlLang}
-        locale="kr"
+        locale="ko"
         className="hover:bg-[#7f5fb95c] w-full pl-2 pr-2"
       >
         한국어

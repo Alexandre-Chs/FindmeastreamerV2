@@ -4,13 +4,24 @@ import { createContext, useContext, useState, PropsWithChildren } from "react";
 type User = {
   [key: string]: any;
 };
+
+type BearerToken = {
+  data: {
+    access_token: string;
+    expires_in: number;
+    token_type: string;
+  };
+};
+
 type apiProps = {
   getAccessToken: () => void;
+  getBearer: () => Promise<BearerToken | null>;
   user: User | null;
 };
 const ApiContext = createContext<apiProps>({
   getAccessToken: () => undefined,
   user: null,
+  getBearer: async () => null,
 });
 
 export const useApiContext = () => {
@@ -23,6 +34,24 @@ export const useApiContext = () => {
 
 export function ApiProvider({ children }: PropsWithChildren) {
   const [user, setUser] = useState<string>();
+
+  const getBearer = async () => {
+    try {
+      const response = await fetch("http://localhost:3000/api/getAppAccess", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      if (response.ok) {
+        const bearer = await response.json();
+        return bearer;
+      }
+    } catch (error) {
+      console.error("error post app accessToken" + error);
+    }
+  };
 
   const getAccessToken = async () => {
     const queryString = window.location.search;
@@ -58,6 +87,7 @@ export function ApiProvider({ children }: PropsWithChildren) {
   const values = {
     user,
     getAccessToken,
+    getBearer,
   };
 
   return <ApiContext.Provider value={values}>{children}</ApiContext.Provider>;
