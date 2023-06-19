@@ -33,7 +33,7 @@ export const useApiContext = () => {
 };
 
 export function ApiProvider({ children }: PropsWithChildren) {
-  const [user, setUser] = useState<string>();
+  const [user, setUser] = useState<User | null>(null);
 
   const getBearer = async () => {
     try {
