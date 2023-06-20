@@ -10,6 +10,9 @@ const pageSelected = (page: typePageProps) => {
       return "/room";
       break;
     }
+    case "participate": {
+      return "/participate";
+    }
     default:
       return "/";
   }

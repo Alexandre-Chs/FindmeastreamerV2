@@ -19,30 +19,12 @@ const customStyles = {
 
 const LotteryManager = () => {
   const t = useTranslations("Room");
-  const [modalIsOpen, setIsOpen] = useState<boolean>();
-
-  function openModal() {
-    setIsOpen(true);
-  }
-
-  function afterOpenModal() {
-    // references are now sync'd and can be accessed.
-  }
-
-  function closeModal() {
-    setIsOpen(false);
-  }
 
   return (
     <div className="mr-4 bg-[#6441a5] px-4 py-2 w-auto align-center justify-center flex rounded-lg hover:bg-[#764ec2] cursor-pointer">
-      <button onClick={openModal}>{t("participation")}</button>
-      <Modal
-        isOpen={modalIsOpen}
-        onAfterOpen={afterOpenModal}
-        onRequestClose={closeModal}
-        style={customStyles}
-        contentLabel="Example Modal"
-      ></Modal>
+      <button>
+        <a href="/participate">{t("participation")}</a>
+      </button>
     </div>
   );
 };
