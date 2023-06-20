@@ -18,26 +18,44 @@ export default function Participation() {
   return (
     <div>
       <WrapperNav page="participate" />
-      <div className="max-w-xs m-auto flex items-start justify-center flex-col">
-        <div className="flex items-center justify-between w-full">
-          <p className="text-9xl">1.</p>
-          <p>
-            Connecte toi : <Login />
-          </p>
+      <div className="flex flex-col items-start justify-center max-w-md m-auto mt-8">
+        <div className="h-auto w-[330px] sm:w-[450px] sm:h-[200px] bg-[#8080801a] flex m-auto flex-col sm:flex-row items-center justify-center p-6 rounded-lg">
+          <div className="font-bold text-9xl">01</div>
+          <div className="sm:w-[250px] sm:ml-4">
+            <h1 className="text-4xl font-bold">Connexion</h1>
+            <p className="mt-2 text-sm">{`Connecte toi pour pouvoir t'inscrire à la loterie`}</p>
+            <p className="mt-2">
+              <Login />
+            </p>
+          </div>
         </div>
-        <div className="flex items-center justify-center">
-          <p className="text-9xl">2.</p>
-          <p>Selectionne la langue que tu parles :</p>
-          <select className="text-black">
-            <option value="fr">Français</option>
-            <option value="en">Anglais</option>
-            <option value="ko">Coréen</option>
-            <option value="es">Espagnol</option>
-          </select>
+
+        <div className="h-auto w-[330px] sm:w-[450px] sm:h-[200px] bg-[#8080801a] flex m-auto flex-col sm:flex-row items-center justify-center p-6 rounded-lg mt-8">
+          <div className="font-bold text-9xl">02</div>
+          <div className="sm:w-[250px] sm:ml-4">
+            <h1 className="text-4xl font-bold">Langue</h1>
+            <p className="mt-2 text-sm">Selectionne ta langue</p>
+            <select className="w-full mt-2 bg-[#6441a5] pl-4 pr-4 h-[40px] rounded-lg cursor-pointer">
+              <option value="fr">Français</option>
+              <option value="en">English</option>
+              <option value="es">Español</option>
+              <option value="ko">한국어</option>
+            </select>
+          </div>
         </div>
-        <div className="flex items-center justify-center">
-          <p className="text-9xl">3.</p>
-          <button onClick={handleSubmitParticipate}>Soumettre</button>
+
+        <div className="h-auto w-[330px] sm:w-[450px] sm:h-[200px] bg-[#8080801a] flex m-auto flex-col sm:flex-row items-center justify-center p-6 rounded-lg mt-8">
+          <div className="font-bold text-9xl">03</div>
+          <div className="sm:w-[250px] sm:ml-4">
+            <h1 className="text-4xl font-bold">Soumettre</h1>
+            <p className="mt-2 text-sm">Tirage au sort toutes les heures !</p>
+            <button
+              onClick={handleSubmitParticipate}
+              className="w-full mt-2 pl-4 pr-4 h-[40px] rounded-lg cursor-pointer bg-[#6441a5]"
+            >
+              Soumettre
+            </button>
+          </div>
         </div>
         {<p className="text-2xl font-bold text-red-600">{error}</p>}
       </div>

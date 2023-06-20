@@ -20,7 +20,7 @@ const Login = () => {
 
   return (
     <a
-      className="bg-[#6441a5] w-auto  mr-4 pl-4 pr-4 h-[40px] flex items-center justify-center rounded-lg cursor-pointer hover:bg-[#7847d3]"
+      className="bg-[#6441a5] w-full  mr-4 pl-4 pr-4 h-[40px] flex items-center justify-center rounded-lg cursor-pointer hover:bg-[#7847d3]"
       onClick={handleAPI}
     >
       {user ? <span>{user.user.display_name}</span> : t("login")}
