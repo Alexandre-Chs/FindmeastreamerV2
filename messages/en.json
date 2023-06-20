@@ -11,5 +11,9 @@
     "copyright": "Copyright © 2023 Findmeastreamer. All rights reserved.",
     "createdBy": "Created by ",
     "getStarted": "Get started !"
+  },
+
+  "Room": {
+      "participation": "To be highlighted !"
   }
 }

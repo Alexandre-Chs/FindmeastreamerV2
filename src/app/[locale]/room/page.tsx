@@ -1,13 +1,11 @@
-import WrapperNav from "@/components/nav/WrapperNav";
 import MainRoom from "./MainRoom";
-import LotteryManager from "./LotteryManager";
+import WrapperNavRoom from "@/components/nav/WrapperNavRoom";
 
 export default function Page() {
   return (
     <div>
-      <WrapperNav page="room" />
+      <WrapperNavRoom page="room" />
       <MainRoom />
-      <LotteryManager />
     </div>
   );
 }
