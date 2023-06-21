@@ -10,10 +10,17 @@
     "lottery": "Login and participe to lottery",
     "copyright": "Copyright © 2023 Findmeastreamer. All rights reserved.",
     "createdBy": "Created by ",
-    "getStarted": "Get started !"
+    "getStarted": "Explore streams",
+    "participation": "To be highlighted !",
+    "textParticipation": "Participate in our lottery for a chance to be featured and showcase your streaming talent!"
   },
-
-  "Room": {
-      "participation": "To be highlighted !"
+  "Participate": {
+      "ConnexionText": "Log in to be able to sign up for the lottery.",
+      "selectLang": "Select your language.",
+      "lotteryRules": "Hourly raffle!",
+      "submit": "Submit",
+      "lang": "Language",
+      "connexion": "Sign in",
+      "successSubmit": "You have just participated with the login:"
   }
 }

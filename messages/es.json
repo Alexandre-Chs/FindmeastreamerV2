@@ -10,10 +10,17 @@
     "lottery": "Inicia sesión y participa en la lotería.",
     "copyright": "Derechos de autor © 2023 Findmeastreamer. Todos los derechos reservados.",
     "createdBy": "Creado por ",
-    "getStarted": "Empezar !"
+    "getStarted": "Explorar los streams",
+    "participation": "¡Destacar!",
+    "textParticipation": "¡Participa en nuestra lotería para tener la oportunidad de ser destacado y mostrar tu talento como streamer!"
   },
-
-  "Room": {
-      "participation": "¡Destacar!"
+  "Participate": {
+      "ConnexionText": "Inicia sesión para poder inscribirte en la lotería.",
+      "selectLang": "Selecciona tu idioma.",
+      "lotteryRules": "¡Sorteo cada hora!",
+      "submit": "Enviar",
+      "lang": "Idioma",
+      "connexion": "Inicia sesión",
+      "successSubmit": "Acabas de participar con el inicio de sesión:"
   }
 }
