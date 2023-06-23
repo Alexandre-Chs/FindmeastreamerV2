@@ -6,7 +6,7 @@ export default function Home() {
     <div className="flex flex-col items-center justify-between max-w-[1400px] mx-auto h-screen">
       <h1 className="text-5xl bg-red-800">
         Currently under construction, not everything is working properly yet!
-        THANKS.
+        THANKS ♥.
       </h1>
       <WrapperNav page="home" />
       <Main />
