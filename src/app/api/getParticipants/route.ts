@@ -1,8 +1,7 @@
-import { NextApiRequest, NextApiResponse } from "next";
 import { NextResponse } from "next/server";
 import { PrismaClient } from "@prisma/client";
 
-export async function GET(req: NextApiRequest, res: NextApiResponse) {
+export async function GET() {
   const prisma = new PrismaClient();
   try {
     const participants = await prisma.user.findMany();

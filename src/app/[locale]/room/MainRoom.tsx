@@ -36,6 +36,32 @@ const MainRoom = () => {
     getStreamer();
   }, [lang, getBearer]);
 
+  useEffect(() => {
+    const checkWinner = async () => {
+      try {
+        const response = await fetch("http://localhost:3000/api/getWinner");
+        if (response.ok) {
+          const winnerData = await response.json();
+          // Utilisez les données du gagnant
+          console.log(winnerData);
+        } else {
+          // Gestion des erreurs
+          console.error("Erreur lors de la récupération du gagnant");
+        }
+      } catch (error) {
+        // Gestion des erreurs
+        console.error(error);
+      }
+    };
+
+    // Appel initial pour vérifier le gagnant
+    checkWinner();
+
+    // Appel périodique toutes les 1 minute
+    console.log("5s");
+    setInterval(checkWinner, 5000);
+  }, []);
+
   return (
     <div className="flex flex-col items-center justify-center h-[80vh] pl-8 pr-8 mt-12 md:flex-row">
       <ReactPlayer
