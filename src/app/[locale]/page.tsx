@@ -4,10 +4,7 @@ import Main from "./Main";
 export default function Home() {
   return (
     <div className="flex flex-col items-center justify-between max-w-[1400px] mx-auto h-screen">
-      <h1 className="text-5xl bg-red-500">
-        Currently under construction, not everything is working properly yet!
-        THANKS ♥.
-      </h1>
+      <p className="text-9xl bg-lime-600">DEVELOP BRANCH</p>
       <WrapperNav page="home" />
       <Main />
       <Footer />
