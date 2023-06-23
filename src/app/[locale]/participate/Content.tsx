@@ -19,7 +19,7 @@ const ContentParticipate = () => {
       setError("You must login first");
     } else {
       toast.success(t("successSubmit") + " " + user.user.login);
-      fetch("http://localhost:3000/api/postParticipants", {
+      fetch("https://findmeastreamer.com/api/postParticipants", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ user: user.user, lang: langSelected }),

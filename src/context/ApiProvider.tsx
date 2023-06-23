@@ -37,12 +37,15 @@ export function ApiProvider({ children }: PropsWithChildren) {
 
   const getBearer = async () => {
     try {
-      const response = await fetch("http://localhost:3000/api/getAppAccess", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+      const response = await fetch(
+        "https://findmeastreamer.com/api/getAppAccess",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
 
       if (response.ok) {
         const bearer = await response.json();
@@ -58,7 +61,7 @@ export function ApiProvider({ children }: PropsWithChildren) {
     const urlParams = new URLSearchParams(queryString);
     const codeAPI = urlParams.get("code");
     try {
-      const response = await fetch("http://localhost:3000/api/apiCode", {
+      const response = await fetch("https://findmeastreamer.com/api/apiCode", {
         method: "POST",
         body: JSON.stringify({ code: codeAPI }),
         headers: {
@@ -68,11 +71,14 @@ export function ApiProvider({ children }: PropsWithChildren) {
       if (response.ok) {
         const data = await response.json();
         if (data.data.access_token) {
-          const getUser = await fetch("http://localhost:3000/api/getUser", {
-            headers: {
-              Authorization: `Bearer ${data.data.access_token}`,
-            },
-          });
+          const getUser = await fetch(
+            "https://findmeastreamer.com/api/getUser",
+            {
+              headers: {
+                Authorization: `Bearer ${data.data.access_token}`,
+              },
+            }
+          );
           const userData = await getUser.json();
           setUser(userData);
         }

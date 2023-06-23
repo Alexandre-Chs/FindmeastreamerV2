@@ -1,7 +1,7 @@
 export const getParentTwitchChat = () => {
   if (process.env.NODE_ENV === "production") {
-    return "findmeastreamer";
+    return "https://findmeastreamer.com";
   } else {
-    return "localhost";
+    return "https://findmeastreamer.com";
   }
 };
