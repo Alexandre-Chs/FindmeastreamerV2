@@ -37,7 +37,7 @@ export function ApiProvider({ children }: PropsWithChildren) {
 
   const getBearer = async () => {
     try {
-      const response = await fetch(`${process.env.URL_APP}/api/getAppAccess`, {
+      const response = await fetch(`/api/getAppAccess`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -58,7 +58,7 @@ export function ApiProvider({ children }: PropsWithChildren) {
     const urlParams = new URLSearchParams(queryString);
     const codeAPI = urlParams.get("code");
     try {
-      const response = await fetch(`${process.env.URL_APP}/api/apiCode`, {
+      const response = await fetch(`/api/apiCode`, {
         method: "POST",
         body: JSON.stringify({ code: codeAPI }),
         headers: {
@@ -68,7 +68,7 @@ export function ApiProvider({ children }: PropsWithChildren) {
       if (response.ok) {
         const data = await response.json();
         if (data.data.access_token) {
-          const getUser = await fetch(`${process.env.URL_APP}/api/getUser`, {
+          const getUser = await fetch(`/api/getUser`, {
             headers: {
               Authorization: `Bearer ${data.data.access_token}`,
             },

@@ -10,7 +10,9 @@ const ReactPlayer = dynamic(() => import("react-player"), { ssr: false });
 
 const MainRoom = () => {
   const [streamer, setStreamer] = useState("");
-  const parent = getParentTwitchChat();
+  const parent = process.env.PARENT_TWITCH_CHAT;
+  console.log(parent);
+  // const parent = "localhost";
   const lang = getLang();
   const { getBearer } = useApiContext();
   useEffect(() => {
@@ -18,9 +20,7 @@ const MainRoom = () => {
       const bearerAppToken = await getBearer();
       if (bearerAppToken !== null) {
         const bearer = bearerAppToken.data.access_token;
-        await fetch(
-          `${process.env.URL_APP}api/getStreamer?lang=${lang}&bearer=${bearer}`
-        )
+        await fetch(`/api/getStreamer?lang=${lang}&bearer=${bearer}`)
           .then((res) => res.json())
           .then((data) => {
             const allUsers = data.user.data;
@@ -39,11 +39,10 @@ const MainRoom = () => {
   useEffect(() => {
     const checkWinner = async () => {
       try {
-        const response = await fetch(`${process.env.URL_APP}/api/getWinner`);
+        const response = await fetch(`/api/getWinner`);
         if (response.ok) {
           const winnerData = await response.json();
           // Utilisez les données du gagnant
-          console.log(winnerData);
         } else {
           // Gestion des erreurs
           console.error("Erreur lors de la récupération du gagnant");
@@ -58,9 +57,10 @@ const MainRoom = () => {
     checkWinner();
 
     // Appel périodique toutes les 1 minute
-    console.log("5s");
     setInterval(checkWinner, 5000);
   }, []);
+
+  console.log(`https://www.twitch.tv/embed/${streamer}/chat?parent=${parent}`);
 
   return (
     <div className="flex flex-col items-center justify-center h-[80vh] pl-8 pr-8 mt-12 md:flex-row">

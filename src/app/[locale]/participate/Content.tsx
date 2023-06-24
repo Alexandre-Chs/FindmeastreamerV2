@@ -19,7 +19,7 @@ const ContentParticipate = () => {
       setError("You must login first");
     } else {
       toast.success(t("successSubmit") + " " + user.user.login);
-      fetch(`${process.env.URL_APP}/api/postParticipants`, {
+      fetch(`/api/postParticipants`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ user: user.user, lang: langSelected }),

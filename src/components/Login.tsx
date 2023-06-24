@@ -9,7 +9,7 @@ const Login = () => {
   const { getAccessToken, user } = useApiContext();
 
   const handleAPI = async () => {
-    await fetch(`${process.env.URL_APP}/api/apiCode`)
+    await fetch(`/api/apiCode`)
       .then((res) => res.json())
       .then((data) => (window.location.href = data.message));
   };
