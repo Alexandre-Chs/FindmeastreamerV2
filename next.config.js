@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   env: {
-    PARENT_TWITCH_CHAT: "findmeastreamerv2-hy3zvgl3t-alexandre-chs.vercel.app",
+    PARENT_TWITCH_CHAT: "findmeastreamer.com",
   },
 };
 const withNextIntl = require("next-intl/plugin")(
