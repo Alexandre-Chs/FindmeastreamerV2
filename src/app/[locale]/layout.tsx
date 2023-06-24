@@ -4,6 +4,7 @@ import { NextIntlClientProvider } from "next-intl";
 import "./globals.css";
 import { Roboto } from "next/font/google";
 import { ApiProvider } from "@/context/ApiProvider";
+import { Analytics } from "@vercel/analytics/react";
 
 const roboto = Roboto({
   weight: ["100", "300", "400", "500", "700"],
@@ -38,6 +39,7 @@ export default async function RootLayout({
         <ApiProvider>
           <NextIntlClientProvider locale={locale} messages={messages}>
             {children}
+            <Analytics />
           </NextIntlClientProvider>
         </ApiProvider>
       </body>
