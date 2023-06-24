@@ -1,7 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   env: {
-    PARENT_TWITCH_CHAT: "findmeastreamer.com",
+    PARENT_TWITCH_CHAT:
+      process.env.NODE_ENV === "development"
+        ? "localhost"
+        : "findmeastreamer.com",
   },
 };
 const withNextIntl = require("next-intl/plugin")(
