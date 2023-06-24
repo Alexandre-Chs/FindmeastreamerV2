@@ -9,7 +9,7 @@ const Login = () => {
   const { getAccessToken, user } = useApiContext();
 
   const handleAPI = async () => {
-    await fetch("https://findmeastreamer.com/api/apiCode")
+    await fetch(`${process.env.URL_APP}/api/apiCode`)
       .then((res) => res.json())
       .then((data) => (window.location.href = data.message));
   };

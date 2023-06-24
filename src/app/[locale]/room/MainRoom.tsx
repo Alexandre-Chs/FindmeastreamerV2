@@ -19,7 +19,7 @@ const MainRoom = () => {
       if (bearerAppToken !== null) {
         const bearer = bearerAppToken.data.access_token;
         await fetch(
-          `https://findmeastreamer.com/api/getStreamer?lang=${lang}&bearer=${bearer}`
+          `${process.env.URL_APP}api/getStreamer?lang=${lang}&bearer=${bearer}`
         )
           .then((res) => res.json())
           .then((data) => {
@@ -39,9 +39,7 @@ const MainRoom = () => {
   useEffect(() => {
     const checkWinner = async () => {
       try {
-        const response = await fetch(
-          "https://findmeastreamer.com/api/getWinner"
-        );
+        const response = await fetch(`${process.env.URL_APP}/api/getWinner`);
         if (response.ok) {
           const winnerData = await response.json();
           // Utilisez les données du gagnant
