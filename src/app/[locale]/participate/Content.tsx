@@ -3,7 +3,7 @@
 import Login from "@/components/Login";
 import React from "react";
 import { useApiContext } from "@/context/ApiProvider";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useTranslations } from "next-intl";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -13,23 +13,56 @@ const ContentParticipate = () => {
   const [error, setError] = useState("");
   const [langSelected, setLangSelected] = useState<string>("fr");
   const t = useTranslations("Participate");
+  const [userParticipation, setUserParticipation] = useState<string>("");
 
   const handleSubmitParticipate = async () => {
     if (!user) {
       setError("You must login first");
     } else {
-      toast.success(t("successSubmit") + " " + user.user.login);
       fetch(`/api/postParticipants`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ user: user.user, lang: langSelected }),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.success === true) {
+            localStorage.setItem("participation", "yes");
+            toast.success(t("successSubmit") + " " + user.user.login);
+          } else {
+            toast.error(t("errorSubmit"));
+          }
+        });
+    }
+  };
+
+  const handleDeleteParticipation = () => {
+    if (user && user.user && user.user.login) {
+      fetch(`/api/deleteParticipation?user=${user.user.login}`, {
+        method: "DELETE",
+      }).then((res) => {
+        if (res.ok) {
+          localStorage.setItem("participation", "no");
+          console.log("Delete user from backend");
+        } else {
+          console.log("Error with delete user in backend");
+        }
       });
     }
   };
 
+  useEffect(() => {
+    const participation = localStorage.getItem("participation");
+    if (user && user.user && participation) {
+      setUserParticipation(participation);
+    }
+  }, [user]);
+
   const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setLangSelected(e.target.value);
   };
+
+  console.log(userParticipation);
 
   return (
     <>
@@ -68,12 +101,21 @@ const ContentParticipate = () => {
           <div className="sm:w-[250px] sm:ml-4">
             <h1 className="text-4xl font-bold">{t("submit")}</h1>
             <p className="mt-2 text-sm">{t("lotteryRules")}</p>
-            <button
-              onClick={handleSubmitParticipate}
-              className="w-full mt-2 pl-4 pr-4 h-[40px] rounded-lg cursor-pointer bg-[#6441a5]"
-            >
-              {t("submit")}
-            </button>
+            {userParticipation ? (
+              <button
+                onClick={handleSubmitParticipate}
+                className="w-full mt-2 pl-4 pr-4 h-[40px] rounded-lg cursor-pointer bg-[#6441a5]  hover:bg-[#7847d3]"
+              >
+                {t("submit")}
+              </button>
+            ) : (
+              <button
+                onClick={handleDeleteParticipation}
+                className="w-full mt-2 pl-4 pr-4 h-[40px] rounded-lg cursor-pointer bg-[#c0291e]  hover:bg-[#da3125]"
+              >
+                Quitter la loterie
+              </button>
+            )}
           </div>
         </div>
         {<p className="text-2xl font-bold text-red-600">{error}</p>}

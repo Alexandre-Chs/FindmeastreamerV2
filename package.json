@@ -10,7 +10,7 @@
     "postinstall": "prisma generate"
   },
   "dependencies": {
-    "@prisma/client": "^4.16.0",
+    "@prisma/client": "^4.16.1",
     "@types/node": "20.2.5",
     "@types/react": "18.2.8",
     "@types/react-dom": "18.2.4",
@@ -33,6 +33,6 @@
   "devDependencies": {
     "@types/node-cron": "^3.0.7",
     "@types/react-modal": "^3.16.0",
-    "prisma": "^4.16.0"
+    "prisma": "^4.16.1"
   }
 }

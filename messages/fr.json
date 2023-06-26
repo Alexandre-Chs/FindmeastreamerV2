@@ -21,6 +21,7 @@
       "submit": "Soumettre",
       "lang": "Langue",
       "connexion": "Connecte-toi",
-      "successSubmit": "Tu viens de participer avec le login :"
+      "successSubmit": "Tu viens de participer avec le login :",
+      "errorSubmit": "Tu as déjà participé pour cette heure. Réessaie à la prochaine heure."
   }
 }

@@ -36,12 +36,12 @@ export default async function RootLayout({
   return (
     <html lang={locale}>
       <body className={`${roboto.className} bg-[#17181C] text-white`}>
-        <ApiProvider>
-          <NextIntlClientProvider locale={locale} messages={messages}>
+        <NextIntlClientProvider locale={locale} messages={messages}>
+          <ApiProvider>
             {children}
             <Analytics />
-          </NextIntlClientProvider>
-        </ApiProvider>
+          </ApiProvider>
+        </NextIntlClientProvider>
       </body>
     </html>
   );

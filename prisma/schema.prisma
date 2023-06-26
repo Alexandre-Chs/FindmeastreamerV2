@@ -13,3 +13,11 @@ model User {
   lang String
   createdAt        DateTime           @default(now())
 }
+
+model Winner {
+  id   Int    @id @default(autoincrement())
+  name String
+  lang String
+  createdAt        DateTime           @default(now())
+}
+

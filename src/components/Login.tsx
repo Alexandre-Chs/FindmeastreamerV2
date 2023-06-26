@@ -3,15 +3,20 @@
 import React, { useEffect } from "react";
 import { useTranslations } from "next-intl";
 import { useApiContext } from "@/context/ApiProvider";
+import { useRouter } from "next-intl/client";
 
 const Login = () => {
   const t = useTranslations("Home");
   const { getAccessToken, user } = useApiContext();
+  const router = useRouter();
 
   const handleAPI = async () => {
     await fetch(`/api/apiCode`)
       .then((res) => res.json())
-      .then((data) => (window.location.href = data.message));
+      .then((data) => {
+        const urlRedirect = data.message;
+        router.push(urlRedirect);
+      });
   };
 
   useEffect(() => {
