@@ -22,6 +22,7 @@
       "lang": "Language",
       "connexion": "Sign in",
       "successSubmit": "You have just participated with the login:",
-      "errorSubmit": "You have already participated for this hour. Try again at the next hour."
+      "errorSubmit": "You have already participated for this hour. Try again at the next hour.",
+      "deleteFromBackend": "You just withdrew your participation."
   }
 }

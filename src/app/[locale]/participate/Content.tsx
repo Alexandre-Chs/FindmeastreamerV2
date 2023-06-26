@@ -13,7 +13,7 @@ const ContentParticipate = () => {
   const [error, setError] = useState("");
   const [langSelected, setLangSelected] = useState<string>("fr");
   const t = useTranslations("Participate");
-  const [userParticipation, setUserParticipation] = useState<string>("");
+  const [isParticipating, setisParticipating] = useState<boolean>();
 
   const handleSubmitParticipate = async () => {
     if (!user) {
@@ -27,8 +27,8 @@ const ContentParticipate = () => {
         .then((res) => res.json())
         .then((data) => {
           if (data.success === true) {
-            localStorage.setItem("participation", "yes");
             toast.success(t("successSubmit") + " " + user.user.login);
+            setisParticipating(true);
           } else {
             toast.error(t("errorSubmit"));
           }
@@ -36,14 +36,25 @@ const ContentParticipate = () => {
     }
   };
 
+  useEffect(() => {
+    if (user) {
+      fetch(`/api/ifParticipating?user=${user.user.login}`, {
+        headers: { "Content-Type": "application/json" },
+      })
+        .then((res) => res.json())
+        .then((data) => setisParticipating(data.success));
+    }
+  }, [user]);
+
   const handleDeleteParticipation = () => {
     if (user && user.user && user.user.login) {
       fetch(`/api/deleteParticipation?user=${user.user.login}`, {
         method: "DELETE",
       }).then((res) => {
         if (res.ok) {
-          localStorage.setItem("participation", "no");
           console.log("Delete user from backend");
+          toast.warning(t("deleteFromBackend"));
+          setisParticipating(false);
         } else {
           console.log("Error with delete user in backend");
         }
@@ -51,18 +62,9 @@ const ContentParticipate = () => {
     }
   };
 
-  useEffect(() => {
-    const participation = localStorage.getItem("participation");
-    if (user && user.user && participation) {
-      setUserParticipation(participation);
-    }
-  }, [user]);
-
   const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setLangSelected(e.target.value);
   };
-
-  console.log(userParticipation);
 
   return (
     <>
@@ -101,7 +103,8 @@ const ContentParticipate = () => {
           <div className="sm:w-[250px] sm:ml-4">
             <h1 className="text-4xl font-bold">{t("submit")}</h1>
             <p className="mt-2 text-sm">{t("lotteryRules")}</p>
-            {userParticipation ? (
+
+            {!isParticipating ? (
               <button
                 onClick={handleSubmitParticipate}
                 className="w-full mt-2 pl-4 pr-4 h-[40px] rounded-lg cursor-pointer bg-[#6441a5]  hover:bg-[#7847d3]"

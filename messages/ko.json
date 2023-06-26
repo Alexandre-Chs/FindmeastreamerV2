@@ -22,7 +22,8 @@
         "lang": "언어",
         "connexion": "로그인해",
         "successSubmit": "로그인한 후 참여하셨습니다:",
-        "errorSubmit": "당신은 이미 이 시간에 참여했습니다. 다음 시간에 다시 시도하세요."
+        "errorSubmit": "당신은 이미 이 시간에 참여했습니다. 다음 시간에 다시 시도하세요.",
+        "deleteFromBackend": "참가를 방금 취소했습니다"
     }
 }
   

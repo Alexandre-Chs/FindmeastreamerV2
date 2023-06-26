@@ -22,6 +22,7 @@
       "lang": "Idioma",
       "connexion": "Inicia sesión",
       "successSubmit": "Acabas de participar con el inicio de sesión:",
-      "errorSubmit": "Ya has participado para esta hora. Inténtalo de nuevo en la próxima hora."
+      "errorSubmit": "Ya has participado para esta hora. Inténtalo de nuevo en la próxima hora.",
+      "deleteFromBackend": "Acabas de retirar tu participación."
   }
 }
