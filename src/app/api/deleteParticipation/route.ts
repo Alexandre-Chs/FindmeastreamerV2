@@ -27,8 +27,6 @@ export async function DELETE(request: NextRequest) {
       },
     },
   });
-  //   const deleteParticipationUser = await prisma.user.delete({
-  //     where: { name: user },
-  //   });
+
   return NextResponse.json({ message: "deleted" });
 }

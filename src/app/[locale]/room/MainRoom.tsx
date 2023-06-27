@@ -11,8 +11,6 @@ const ReactPlayer = dynamic(() => import("react-player"), { ssr: false });
 const MainRoom = () => {
   const [streamer, setStreamer] = useState("");
   const parent = process.env.PARENT_TWITCH_CHAT;
-  console.log(parent);
-  // const parent = "localhost";
   const lang = getLang();
   const { getBearer } = useApiContext();
   useEffect(() => {
@@ -59,8 +57,6 @@ const MainRoom = () => {
     // Appel périodique toutes les 1 minute
     setInterval(checkWinner, 5000);
   }, []);
-
-  console.log(`https://www.twitch.tv/embed/${streamer}/chat?parent=${parent}`);
 
   return (
     <div className="flex flex-col items-center justify-center h-[80vh] pl-8 pr-8 mt-12 md:flex-row">
