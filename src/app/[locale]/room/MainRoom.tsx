@@ -37,9 +37,10 @@ const MainRoom = () => {
   useEffect(() => {
     const checkWinner = async () => {
       try {
-        const response = await fetch(`/api/getWinner`);
+        const response = await fetch(`/api/getParticipants`);
         if (response.ok) {
-          const winnerData = await response.json();
+          const currentParticipants = await response.json();
+          console.log(currentParticipants);
           // Utilisez les données du gagnant
         } else {
           // Gestion des erreurs
@@ -50,11 +51,7 @@ const MainRoom = () => {
         console.error(error);
       }
     };
-
-    // Appel initial pour vérifier le gagnant
     checkWinner();
-
-    // Appel périodique toutes les 1 minute
     setInterval(checkWinner, 5000);
   }, []);
 
