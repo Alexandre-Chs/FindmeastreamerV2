@@ -3,6 +3,9 @@ import prisma from "../../../../prisma/prisma";
 
 export async function DELETE(request: NextRequest) {
   const user = request.nextUrl.searchParams.get("user");
+  if (user === null) {
+    return NextResponse.json({ message: "user is null" });
+  }
   const now = new Date();
   const currentHour = now.getHours();
   const deleteResult = await prisma.user.deleteMany({
@@ -24,8 +27,6 @@ export async function DELETE(request: NextRequest) {
       },
     },
   });
-  //   const deleteParticipationUser = await prisma.user.delete({
-  //     where: { name: user },
-  //   });
+
   return NextResponse.json({ message: "deleted" });
 }
