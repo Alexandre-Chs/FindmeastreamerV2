@@ -39,7 +39,8 @@ const MainRoom = () => {
       try {
         const response = await fetch(`/api/getWinner`);
         if (response.ok) {
-          const winnerData = await response.json();
+          const currentWinner = await response.json();
+          console.log(currentWinner);
           // Utilisez les données du gagnant
         } else {
           // Gestion des erreurs
@@ -50,12 +51,7 @@ const MainRoom = () => {
         console.error(error);
       }
     };
-
-    // Appel initial pour vérifier le gagnant
     checkWinner();
-
-    // Appel périodique toutes les 1 minute
-    setInterval(checkWinner, 5000);
   }, []);
 
   return (
