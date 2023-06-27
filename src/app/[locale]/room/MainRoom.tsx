@@ -37,7 +37,7 @@ const MainRoom = () => {
   useEffect(() => {
     const checkWinner = async () => {
       try {
-        const response = await fetch(`/api/getWinner`);
+        const response = await fetch(`/api/getCurrentParticipants`);
         if (response.ok) {
           const currentWinner = await response.json();
           console.log(currentWinner);
