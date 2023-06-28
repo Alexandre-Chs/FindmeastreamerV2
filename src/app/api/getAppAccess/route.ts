@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 
 export async function POST(request: Request) {
   const params = new URLSearchParams();
+  console.log(process.env.GRANT_TYPE_APP);
   if (
     process.env.CLIENT_ID &&
     process.env.CLIENT_SECRET &&

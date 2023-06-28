@@ -1,6 +1,5 @@
 import { NextResponse } from "next/server";
 import prisma from "../../../../prisma/prisma";
-import { useApiContext } from "@/context/ApiProvider";
 
 export async function GET() {
   try {
@@ -28,58 +27,45 @@ export async function GET() {
     const participantsLang = {};
     const bearer = await fetch("http://localhost:3000/api/getAppAccess", {
       method: "POST",
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        return data;
-      });
+    }).then((res) => res.json());
 
     // Parcourt chaque participant
-    const processParticipants = async () => {
-      for (const participant of participants) {
-        const lang = participant.lang;
-        const name = participant.name;
-        try {
-          const response = await fetch(
-            `http://localhost:3000/api/getStreamsLive?login=${name}&bearer=${bearer.data.access_token}`
-          );
-          const data = await response.json();
-          console.log(data);
-        } catch (error) {
-          console.error(error);
-        }
+    for (const participant of participants) {
+      const lang = participant.lang;
+      const name = participant.name;
+      if (process.env.CLIENT_ID) {
+        const headers = {
+          Authorization: `Bearer ${bearer}`,
+          "Client-Id": process.env.CLIENT_ID,
+        };
 
-        // Vérifie si la langue est déjà présente dans l'objet participantsLang
-        if (!participantsLang[lang]) {
-          // Si la langue n'existe pas encore, crée un tableau vide pour cette langue
-          participantsLang[lang] = [];
-        }
-
-        // Ajoute le participant au tableau correspondant à sa langue
-        participantsLang[lang].push(participant);
+        const apiUrl = `https://api.twitch.tv/helix/streams?user_login=${name}`;
+        const getStream = await fetch(apiUrl, { headers });
+        const responseData = await getStream.json();
+        console.log(responseData);
       }
-    };
 
-    processParticipants();
+      if (!participantsLang[lang]) {
+        // Si la langue n'existe pas encore, crée un tableau vide pour cette langue
+        participantsLang[lang] = [];
+      }
+
+      // Ajoute le participant au tableau correspondant à sa langue
+      participantsLang[lang].push(participant);
+    }
 
     const gagnantsParLang = {};
 
-    // for (let lang in participantsLang) {
-    //   const participants = participantsLang[lang];
+    for (let lang in participantsLang) {
+      const participants = participantsLang[lang];
 
-    //   // Vérifie s'il y a des participants dans cette langue
-    //   if (participants.length > 0) {
-    //     const gagnantIndex = Math.floor(Math.random() * participants.length);
-    //     const winner = participants[gagnantIndex];
-    //     const winnerPerLang = await prisma.winner.create({
-    //       data: {
-    //         name: winner.name,
-    //         lang: winner.lang,
-    //       },
-    //     });
-    //     gagnantsParLang[lang] = winner;
-    //   }
-    // }
+      // Vérifie s'il y a des participants dans cette langue
+      if (participants.length > 0) {
+        const gagnantIndex = Math.floor(Math.random() * participants.length);
+        const winner = participants[gagnantIndex];
+        gagnantsParLang[lang] = winner;
+      }
+    }
 
     return NextResponse.json({ winners: gagnantsParLang });
   } catch (error) {
