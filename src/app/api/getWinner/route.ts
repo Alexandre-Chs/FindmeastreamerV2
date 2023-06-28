@@ -2,29 +2,25 @@ import { NextResponse } from "next/server";
 import prisma from "../../../../prisma/prisma";
 
 export async function GET(request: Request) {
-  try {
-    const response = await fetch(
-      "http://localhost:3000/api/getCurrentParticipants"
-    );
-    const currentWinner = await response.json();
-
-    const winners = Object.values(currentWinner.currentParticipants.winners);
-
-    for (const winner of winners) {
-      const { name, lang } = winner;
-      await prisma.winner.create({
-        data: {
-          username: name,
-          language: lang,
-        },
-      });
-    }
-
-    return NextResponse.json({ currentParticipants: currentWinner });
-  } catch (error) {
-    console.log(error);
-    return NextResponse.json({
-      message: "Error when getting current participants",
-    });
-  }
+  const now = new Date();
+  const currentHour = now.getHours();
+  const winner = await prisma.winner.findMany({
+    where: {
+      createdAt: {
+        gte: new Date(
+          now.getFullYear(),
+          now.getMonth(),
+          now.getDate(),
+          currentHour
+        ),
+        lt: new Date(
+          now.getFullYear(),
+          now.getMonth(),
+          now.getDate(),
+          currentHour + 1
+        ),
+      },
+    },
+  });
+  return NextResponse.json({ winner: winner });
 }
