@@ -100,5 +100,5 @@ export async function GET() {
     }
   }
 
-  return NextResponse.json({ winners: participantsLive });
+  return NextResponse.json({ winners: winnersByLang });
 }
