@@ -31,10 +31,13 @@ export async function GET() {
       const lang = participant.lang;
       const name = participant.name;
 
-      const response = await fetch("http://localhost:3000/api/getAppAccess", {
-        method: "POST",
-        next: { revalidate: 10 },
-      });
+      const response = await fetch(
+        "https://findmeastreamerv2.vercel.app/api/getAppAccess",
+        {
+          method: "POST",
+          next: { revalidate: 10 },
+        }
+      );
       const data = await response.json();
       if (process.env.CLIENT_ID) {
         const twitchResponse = await fetch(
