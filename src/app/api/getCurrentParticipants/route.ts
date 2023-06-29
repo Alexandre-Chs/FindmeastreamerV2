@@ -104,6 +104,6 @@ export async function GET() {
     return NextResponse.json({ winners: winnersByLang });
   } catch (error) {
     console.log(error);
-    return NextResponse.json({ message: "Error, no participants currently" });
+    return NextResponse.json({ message: error });
   }
 }
