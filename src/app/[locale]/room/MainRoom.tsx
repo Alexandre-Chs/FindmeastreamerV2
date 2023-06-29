@@ -3,7 +3,6 @@
 import { getLang } from "@/utils/getLang";
 import React, { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
-import { getParentTwitchChat } from "@/utils/getParentTwitchChat";
 import { useApiContext } from "@/context/ApiProvider";
 
 const ReactPlayer = dynamic(() => import("react-player"), { ssr: false });
@@ -13,47 +12,68 @@ const MainRoom = () => {
   const parent = process.env.PARENT_TWITCH_CHAT;
   const lang = getLang();
   const { getBearer } = useApiContext();
-  useEffect(() => {
-    const getStreamer = async () => {
-      const bearerAppToken = await getBearer();
-      if (bearerAppToken !== null) {
-        const bearer = bearerAppToken.data.access_token;
-        await fetch(`/api/getStreamer?lang=${lang}&bearer=${bearer}`)
-          .then((res) => res.json())
-          .then((data) => {
-            const allUsers = data.user.data;
-            const randomIndex = Math.floor(Math.random() * allUsers.length);
-            const randomStreamer = allUsers[randomIndex].user_login;
-            setStreamer(randomStreamer);
-          });
-      } else {
-        // Gérez le cas où le bearer est null
-      }
-    };
-
-    getStreamer();
-  }, [lang, getBearer]);
 
   useEffect(() => {
     const checkWinner = async () => {
       try {
+<<<<<<< HEAD
         const response = await fetch(`/api/getParticipants`);
         if (response.ok) {
           const currentParticipants = await response.json();
           console.log(currentParticipants);
           // Utilisez les données du gagnant
+=======
+        const response = await fetch("/api/getWinner");
+        if (response.ok) {
+          const currentWinner = await response.json();
+          if (currentWinner && currentWinner.winner) {
+            const winnerByLang = currentWinner.winner.find(
+              (winner: { lang: string | undefined }) => winner.lang === lang
+            );
+            if (winnerByLang) {
+              setStreamer(winnerByLang.name);
+            } else {
+              const bearerAppToken = await getBearer();
+              if (bearerAppToken !== null) {
+                const bearer = bearerAppToken.data.access_token;
+                const streamerResponse = await fetch(
+                  `/api/getStreamer?lang=${lang}&bearer=${bearer}`
+                );
+                if (streamerResponse.ok) {
+                  const streamerData = await streamerResponse.json();
+                  const allUsers = streamerData.user.data;
+                  const randomIndex = Math.floor(
+                    Math.random() * allUsers.length
+                  );
+                  const randomStreamer = allUsers[randomIndex].user_login;
+                  setStreamer(randomStreamer);
+                } else {
+                  console.error("Can't get a streamers");
+                }
+              } else {
+                console.error("Bearer is null");
+              }
+            }
+          } else {
+            console.error("No winner");
+          }
+>>>>>>> local
         } else {
-          // Gestion des erreurs
-          console.error("Erreur lors de la récupération du gagnant");
+          console.error("Can't get winner");
         }
       } catch (error) {
-        // Gestion des erreurs
         console.error(error);
       }
     };
+<<<<<<< HEAD
     checkWinner();
     setInterval(checkWinner, 5000);
   }, []);
+=======
+
+    checkWinner();
+  }, [lang, getBearer]);
+>>>>>>> local
 
   return (
     <div className="flex flex-col items-center justify-center h-[80vh] pl-8 pr-8 mt-12 md:flex-row">
