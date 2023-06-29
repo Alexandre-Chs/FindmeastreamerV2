@@ -24,50 +24,81 @@ export async function GET() {
       },
     });
 
-    const participantsLang = {};
-    const bearer = await fetch("http://localhost:3000/api/getAppAccess", {
-      method: "POST",
-    }).then((res) => res.json());
+    const participantsLang: Record<string, any> = {};
+    const participantsLive = [];
 
-    // Parcourt chaque participant
     for (const participant of participants) {
       const lang = participant.lang;
       const name = participant.name;
+
+      const response = await fetch("http://localhost:3000/api/getAppAccess", {
+        method: "POST",
+        next: { revalidate: 10 },
+      });
+      const data = await response.json();
       if (process.env.CLIENT_ID) {
-        const headers = {
-          Authorization: `Bearer ${bearer}`,
-          "Client-Id": process.env.CLIENT_ID,
-        };
-
-        const apiUrl = `https://api.twitch.tv/helix/streams?user_login=${name}`;
-        const getStream = await fetch(apiUrl, { headers });
-        const responseData = await getStream.json();
-        console.log(responseData);
+        const twitchResponse = await fetch(
+          `https://api.twitch.tv/helix/streams?user_login=${name}`,
+          {
+            headers: {
+              Authorization: `Bearer ${data.data.access_token}`,
+              "Client-Id": process.env.CLIENT_ID,
+            },
+            cache: "no-store",
+          }
+        );
+        const twitchData = await twitchResponse.json();
+        if (twitchData.data.length > 0) {
+          participantsLive.push(participant);
+        } else {
+          console.log("participants is not live : " + participant.name);
+        }
       }
-
-      if (!participantsLang[lang]) {
-        // Si la langue n'existe pas encore, crée un tableau vide pour cette langue
-        participantsLang[lang] = [];
-      }
-
-      // Ajoute le participant au tableau correspondant à sa langue
-      participantsLang[lang].push(participant);
     }
 
-    const gagnantsParLang = {};
+    participantsLive.forEach((participant) => {
+      const lang = participant.lang;
+      if (!participantsLang[lang]) {
+        participantsLang[lang] = []; // Crée un tableau vide pour la langue si elle n'existe pas encore
+      }
+      participantsLang[lang].push(participant); // Ajoute le participant au tableau correspondant à sa langue
+    });
+
+    const winnersByLang: Record<string, any> = {};
 
     for (let lang in participantsLang) {
       const participants = participantsLang[lang];
 
-      // Vérifie s'il y a des participants dans cette langue
+      // Check if there are participants in this language
       if (participants.length > 0) {
-        const gagnantIndex = Math.floor(Math.random() * participants.length);
-        const winner = participants[gagnantIndex];
-        gagnantsParLang[lang] = winner;
+        const winnerIndex = Math.floor(Math.random() * participants.length);
+        const winner = participants[winnerIndex];
+        winnersByLang[lang] = winner;
       }
     }
 
-    return NextResponse.json({ winners: gagnantsParLang });
+    for (let lang in winnersByLang) {
+      const winner = winnersByLang[lang];
+      try {
+        await prisma.winner.create({
+          data: {
+            name: winner.name,
+            lang: winner.lang,
+          },
+        });
+
+        console.log(
+          `Winner '${winner.name}' (${winner.lang}) has been saved to the database.`
+        );
+      } catch (error) {
+        console.error(
+          `Error saving winner '${winner.name}' (${winner.slang}):`,
+          error
+        );
+      }
+    }
+
+    return NextResponse.json({ winners: winnersByLang });
   } catch (error) {
     console.log(error);
     return NextResponse.json({ message: "Error, no participants currently" });

@@ -9,7 +9,7 @@ export async function GET(request: NextRequest) {
       "Client-Id": process.env.CLIENT_ID,
     };
 
-    const apiUrl = ` https://api.twitch.tv/helix/streams?language=${lang}`;
+    const apiUrl = `https://api.twitch.tv/helix/streams?language=${lang}`;
     const getStream = await fetch(apiUrl, { headers });
     const responseData = await getStream.json();
 
