@@ -101,7 +101,7 @@ export async function GET() {
       }
     }
 
-    return NextResponse.json({ winners: winnersByLang });
+    return NextResponse.json({ winners: participantsLive });
   } catch (error) {
     console.log(error);
     return NextResponse.json({ message: error });
