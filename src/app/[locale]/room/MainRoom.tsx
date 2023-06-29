@@ -14,6 +14,59 @@ const MainRoom = () => {
   const { getBearer } = useApiContext();
 
   useEffect(() => {
+    const dataTestError = {
+      winner: [
+        {
+          id: 12,
+          name: "solaryhs",
+          lang: "fr",
+          createdAt: "2023-06-29T10:26:13.987Z",
+        },
+        {
+          id: 13,
+          name: "solaryhs",
+          lang: "fr",
+          createdAt: "2023-06-29T10:27:03.615Z",
+        },
+        {
+          id: 14,
+          name: "solaryhs",
+          lang: "fr",
+          createdAt: "2023-06-29T10:28:04.024Z",
+        },
+        {
+          id: 15,
+          name: "solaryhs",
+          lang: "fr",
+          createdAt: "2023-06-29T10:30:09.251Z",
+        },
+        {
+          id: 16,
+          name: "solaryhs",
+          lang: "fr",
+          createdAt: "2023-06-29T10:31:03.792Z",
+        },
+        {
+          id: 17,
+          name: "solaryhs",
+          lang: "fr",
+          createdAt: "2023-06-29T10:32:04.604Z",
+        },
+        {
+          id: 18,
+          name: "solaryhs",
+          lang: "fr",
+          createdAt: "2023-06-29T10:33:03.379Z",
+        },
+        {
+          id: 19,
+          name: "solaryhs",
+          lang: "fr",
+          createdAt: "2023-06-29T10:33:22.149Z",
+        },
+      ],
+    };
+    
     const checkWinner = async () => {
       try {
         const response = await fetch("/api/getWinner");
