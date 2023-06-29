@@ -16,13 +16,6 @@ const MainRoom = () => {
   useEffect(() => {
     const checkWinner = async () => {
       try {
-<<<<<<< HEAD
-        const response = await fetch(`/api/getParticipants`);
-        if (response.ok) {
-          const currentParticipants = await response.json();
-          console.log(currentParticipants);
-          // Utilisez les données du gagnant
-=======
         const response = await fetch("/api/getWinner");
         if (response.ok) {
           const currentWinner = await response.json();
@@ -57,7 +50,6 @@ const MainRoom = () => {
           } else {
             console.error("No winner");
           }
->>>>>>> local
         } else {
           console.error("Can't get winner");
         }
@@ -65,15 +57,9 @@ const MainRoom = () => {
         console.error(error);
       }
     };
-<<<<<<< HEAD
-    checkWinner();
-    setInterval(checkWinner, 5000);
-  }, []);
-=======
 
     checkWinner();
   }, [lang, getBearer]);
->>>>>>> local
 
   return (
     <div className="flex flex-col items-center justify-center h-[80vh] pl-8 pr-8 mt-12 md:flex-row">
