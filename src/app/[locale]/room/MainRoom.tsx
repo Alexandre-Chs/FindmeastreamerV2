@@ -63,6 +63,8 @@ const MainRoom = () => {
     checkWinner();
   }, [lang, getBearer]);
 
+  console.log(streamer);
+
   return (
     <div className="flex flex-col items-center justify-center h-[80vh] pl-8 pr-8 mt-12 md:flex-row">
       <ReactPlayer
