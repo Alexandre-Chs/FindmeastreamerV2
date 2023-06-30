@@ -23,8 +23,6 @@ const MainRoom = () => {
             const winnerByLang = currentWinner.winner.find(
               (winner: { lang: string | undefined }) => winner.lang === lang
             );
-            console.log(currentWinner);
-            console.log(winnerByLang);
             if (winnerByLang) {
               setStreamer(winnerByLang.name);
             } else {
