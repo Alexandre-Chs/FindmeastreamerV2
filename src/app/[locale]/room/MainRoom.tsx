@@ -16,13 +16,15 @@ const MainRoom = () => {
   useEffect(() => {
     const checkWinner = async () => {
       try {
-        const response = await fetch("/api/getWinner");
+        const response = await fetch("/api/getWinner", { cache: "no-store" });
         if (response.ok) {
           const currentWinner = await response.json();
           if (currentWinner && currentWinner.winner) {
             const winnerByLang = currentWinner.winner.find(
               (winner: { lang: string | undefined }) => winner.lang === lang
             );
+            console.log(currentWinner);
+            console.log(winnerByLang);
             if (winnerByLang) {
               setStreamer(winnerByLang.name);
             } else {

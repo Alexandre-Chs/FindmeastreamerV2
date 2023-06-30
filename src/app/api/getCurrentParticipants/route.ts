@@ -32,7 +32,7 @@ export async function GET() {
       const name = participant.name;
 
       const response = await fetch(
-        "https://findmeastreamerv2.vercel.app/api/getAppAccess",
+        "https://findmeastreamer.com/api/getAppAccess",
         {
           method: "POST",
           next: { revalidate: 10 },
