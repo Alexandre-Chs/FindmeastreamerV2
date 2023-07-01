@@ -4,12 +4,15 @@ import prisma from "../../../../prisma/prisma";
 export async function GET(request: Request) {
   const now = new Date();
   const currentHour = now.getHours();
-  const startOfCurrentDay = new Date(
+
+  // Déterminer la date et l'heure de début de l'heure précédente
+  const startOfPreviousHour = new Date(
     now.getFullYear(),
     now.getMonth(),
-    now.getDate()
+    now.getDate(),
+    currentHour - 1
   );
-  const endOfCurrentHour = new Date(
+  const endOfPreviousHour = new Date(
     now.getFullYear(),
     now.getMonth(),
     now.getDate(),
@@ -19,8 +22,8 @@ export async function GET(request: Request) {
   const winner = await prisma.winner.findMany({
     where: {
       createdAt: {
-        gte: startOfCurrentDay,
-        lt: endOfCurrentHour,
+        gte: startOfPreviousHour,
+        lt: endOfPreviousHour,
       },
     },
   });
