@@ -30,13 +30,10 @@ export async function GET() {
     const lang = participant.lang;
     const name = participant.name;
 
-    const response = await fetch(
-      "https://findmeastreamer.com/api/getAppAccess",
-      {
-        method: "POST",
-        next: { revalidate: 10 },
-      }
-    );
+    const response = await fetch("/api/getAppAccess", {
+      method: "POST",
+      next: { revalidate: 10 },
+    });
     const data = await response.json();
     if (process.env.CLIENT_ID) {
       const twitchResponse = await fetch(
@@ -50,7 +47,7 @@ export async function GET() {
         }
       );
       const twitchData = await twitchResponse.json();
-      if (twitchData.data.length > 0) {
+      if (twitchData && twitchData.data.length > 0) {
         participantsLive.push(participant);
       } else {
         console.log("participants is not live : " + participant.name);
