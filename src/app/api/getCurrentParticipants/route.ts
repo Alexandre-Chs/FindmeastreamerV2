@@ -27,6 +27,7 @@ export async function GET() {
   const participantsLive = [];
 
   for (const participant of participants) {
+    console.log(participant);
     const lang = participant.lang;
     const name = participant.name;
 

@@ -19,6 +19,7 @@ const MainRoom = () => {
         const response = await fetch("/api/getWinner", { cache: "no-store" });
         if (response.ok) {
           const currentWinner = await response.json();
+          console.log(currentWinner);
           if (currentWinner && currentWinner.winner) {
             const winnerByLang = currentWinner.winner.find(
               (winner: { lang: string | undefined }) => winner.lang === lang
