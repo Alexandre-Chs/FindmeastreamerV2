@@ -22,5 +22,10 @@ export async function GET(request: Request) {
       },
     },
   });
-  return NextResponse.json({ winner: winner });
+  const response = NextResponse.json({ winner: winner });
+
+  // Ajouter l'en-tête de cache-control pour désactiver la mise en cache
+  response.headers.set("Cache-Control", "no-store");
+
+  return response;
 }
