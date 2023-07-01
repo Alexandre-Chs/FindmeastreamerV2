@@ -30,10 +30,13 @@ export async function GET() {
     const lang = participant.lang;
     const name = participant.name;
 
-    const response = await fetch("/api/getAppAccess", {
-      method: "POST",
-      next: { revalidate: 10 },
-    });
+    const response = await fetch(
+      "http://findmeastreamer.com/api/getAppAccess",
+      {
+        method: "POST",
+        next: { revalidate: 10 },
+      }
+    );
     const data = await response.json();
     if (process.env.CLIENT_ID) {
       const twitchResponse = await fetch(
