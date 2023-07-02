@@ -23,10 +23,7 @@ export async function GET() {
         },
       },
     });
-
-    const response = NextResponse.json({ winner: winner });
-    response.headers.set("Cache-Control", "no-cache");
-    return response;
+    return NextResponse.json({ winner: winner });
   } catch (error) {
     console.log("Error on getWinner" + error);
   }
