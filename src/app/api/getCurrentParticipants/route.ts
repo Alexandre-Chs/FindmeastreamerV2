@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import prisma from "../../../../prisma/prisma";
 
-export async function GET() {
+export async function GET(request: Request) {
   const now = new Date();
   const currentHour = now.getHours();
   const participants = await prisma.user.findMany({
