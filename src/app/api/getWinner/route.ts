@@ -23,7 +23,15 @@ export async function GET() {
         },
       },
     });
-    return NextResponse.json({ winner: winner });
+
+    const response = NextResponse.json({ winner });
+
+    // Ajouter des en-têtes pour désactiver la mise en cache
+    response.headers.set("Cache-Control", "no-store, must-revalidate");
+    response.headers.set("Pragma", "no-cache");
+    response.headers.set("Expires", "0");
+
+    return response;
   } catch (error) {
     console.log("Error on getWinner" + error);
   }
