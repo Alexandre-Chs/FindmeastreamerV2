@@ -6,6 +6,20 @@ const nextConfig = {
         ? "localhost"
         : "findmeastreamer.com",
   },
+  reactStrictMode: true,
+  async headers() {
+    return [
+      {
+        source: "/api/getWinner",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "no-cache, no-store, must-revalidate",
+          },
+        ],
+      },
+    ];
+  },
 };
 const withNextIntl = require("next-intl/plugin")(
   // This is the default (also the `src` folder is supported out of the box)
