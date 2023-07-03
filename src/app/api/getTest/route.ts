@@ -23,5 +23,5 @@ export async function GET(request: Request) {
     },
   });
 
-  return NextResponse.json({ winner: winner });
+  return NextResponse.json({ test: winner });
 }
