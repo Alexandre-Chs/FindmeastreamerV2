@@ -11,11 +11,8 @@ const i18nMiddleware = createMiddleware({
 
 export function middleware(req: NextRequest, _res: NextResponse) {
   const validPassword = process.env.PASSWORD_QUERY_GET;
-  console.log(req.nextUrl.pathname);
   if (req.nextUrl.pathname === passwordProtectedRoute) {
     const providedPassword = req.nextUrl.searchParams.get("password");
-    console.log(validPassword);
-
     if (providedPassword?.toString() === validPassword) {
       return;
     } else {
