@@ -28,7 +28,6 @@ export async function GET(request: Request) {
 
   for (const participant of participants) {
     console.log(participant);
-    const lang = participant.lang;
     const name = participant.name;
 
     const response = await fetch(
