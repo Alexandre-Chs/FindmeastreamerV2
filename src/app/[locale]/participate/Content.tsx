@@ -48,9 +48,12 @@ const ContentParticipate = () => {
 
   const handleDeleteParticipation = () => {
     if (user && user.user && user.user.login) {
-      fetch(`/api/deleteParticipation?user=${user.user.login}`, {
-        method: "DELETE",
-      }).then((res) => {
+      fetch(
+        `/api/deleteParticipation?user=${user.user.login}&pw=${process.env.NEXT_PUBLIC_PW}`,
+        {
+          method: "DELETE",
+        }
+      ).then((res) => {
         if (res.ok) {
           console.log("Delete user from backend");
           toast.warning(t("deleteFromBackend"));

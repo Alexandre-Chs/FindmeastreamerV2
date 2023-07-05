@@ -27,9 +27,7 @@ export async function GET(request: Request) {
   const participantsLive = [];
 
   for (const participant of participants) {
-    console.log(participant);
     const name = participant.name;
-
     const response = await fetch(
       "https://findmeastreamer.com/api/getAppAccess",
       {
