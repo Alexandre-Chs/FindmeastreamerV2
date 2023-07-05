@@ -98,5 +98,5 @@ export async function GET(request: Request) {
     }
   }
 
-  return NextResponse.json({ winners: participantsLive });
+  return NextResponse.json({ winners: winnersByLang });
 }
