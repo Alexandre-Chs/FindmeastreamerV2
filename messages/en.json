@@ -3,7 +3,7 @@
     "login": "Login",
     "title1": "Discover hidden gems in",
     "title2": " 2 clicks !",
-    "explain": "Dive into the captivating world of emerging streamers, where every click brings you closer to a unique experience. Uncover undiscovered talents, ready to surprise and entertain you like never before. Redefine your streaming journey by discovering these hidden treasures!",
+    "explain": "Dive into the captivating world of emerging streamers, where every click brings you closer to a unique experience. Discover undiscovered talents on Twitch, ready to surprise and entertain you like never before. Redefine your streaming journey by uncovering these hidden gems!",
     "chooseRoom": "Choose the language of your preferred streaming room to immerse yourself in the streaming experience.",
     "streamer": "Streamers",
     "viewers": "Viewers",
@@ -15,14 +15,14 @@
     "textParticipation": "Participate in our lottery for a chance to be featured and showcase your streaming talent!"
   },
   "Participate": {
-      "ConnexionText": "Log in to be able to sign up for the lottery.",
-      "selectLang": "Select your language.",
-      "lotteryRules": "Hourly raffle!",
-      "submit": "Submit",
-      "lang": "Language",
-      "connexion": "Sign in",
-      "successSubmit": "You have just participated with the login:",
-      "errorSubmit": "You have already participated for this hour. Try again at the next hour.",
-      "deleteFromBackend": "You just withdrew your participation."
+    "ConnexionText": "Log in to be able to sign up for the lottery.",
+    "selectLang": "Select your language.",
+    "lotteryRules": "Hourly raffle!",
+    "submit": "Submit",
+    "lang": "Language",
+    "connexion": "Sign in",
+    "successSubmit": "You have just participated with the login:",
+    "errorSubmit": "You have already participated for this hour. Try again at the next hour.",
+    "deleteFromBackend": "You just withdrew your participation."
   }
 }
