@@ -11,17 +11,32 @@ const roboto = Roboto({
   subsets: ["latin"],
 });
 
-export const metadata = {
-  title: "Findmeastreamer",
-  description: "Find new little streamers!",
-};
-
 type RootLayoutProps = {
   children: React.ReactNode;
   params: {
     locale: string;
   };
 };
+
+const metadataLang: { [key: string]: { title: string; description: string } } =
+  {
+    fr: {
+      title: "Findmeastreamer",
+      description: "Description en fr",
+    },
+    en: {
+      title: "Findmeastreamer",
+      description: "Description en en",
+    },
+    es: {
+      title: "Findmeastreamer",
+      description: "Description en es",
+    },
+    ko: {
+      title: "Findmeastreamer",
+      description: "Description en ko",
+    },
+  };
 
 export default async function RootLayout({
   children,
@@ -33,8 +48,13 @@ export default async function RootLayout({
   if (params.locale !== locale) {
     notFound();
   }
+
   return (
     <html lang={locale}>
+      <head>
+        <title>{metadataLang[locale].title}</title>
+        <meta name="description" content={metadataLang[locale].description} />
+      </head>
       <body className={`${roboto.className} bg-[#17181C] text-white`}>
         <NextIntlClientProvider locale={locale} messages={messages}>
           <ApiProvider>
