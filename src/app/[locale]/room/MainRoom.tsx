@@ -61,6 +61,24 @@ const MainRoom = () => {
     checkWinner();
   }, [lang, getBearer]);
 
+  useEffect(() => {
+    const checkTime = () => {
+      const currentTime = new Date();
+      const minutes = currentTime.getMinutes();
+
+      if (minutes === 1) {
+        window.location.reload();
+      }
+    };
+
+    const interval = setInterval(() => {
+      checkTime();
+      console.log("check time");
+    }, 60000);
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <div className="flex flex-col items-center justify-center h-[80vh] pl-8 pr-8 mt-12 md:flex-row">
       <ReactPlayer
