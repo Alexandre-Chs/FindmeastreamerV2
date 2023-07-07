@@ -24,6 +24,10 @@
     "connexion": "Inicia sesión",
     "successSubmit": "Acabas de participar con el inicio de sesión:",
     "errorSubmit": "Ya has participado para esta hora. Inténtalo de nuevo en la próxima hora.",
-    "deleteFromBackend": "Acabas de retirar tu participación."
+    "deleteFromBackend": "Acabas de retirar tu participación.",
+    "titleParticipation1": "¡Únete a nosotros para una experiencia cautivadora y gratuita! Inicia sesión a través de Twitch,",
+    "titleParticipation2": "no se requiere tarjeta de crédito para participar.",
+    "explain1": "Cada hora, prueba tu suerte y conviértete en un potencial ganador. Respeta los idiomas de participación, ya que nuestros moderadores se encargan de mantener un ambiente amigable.",
+    "explain2": "Estate en línea durante el sorteo para maximizar tus posibilidades de victoria. ¡Ven y descubre un universo emocionante y permítenos sorprenderte!"
   }
 }
