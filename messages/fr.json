@@ -2,8 +2,8 @@
   "Home": {
     "login": "Connexion",
     "title1": "Découvrez des pépites inconnues",
-    "title2": " en 2 clics !",
-    "explain": "Plongez dans le monde captivant des streamers émergents, où chaque clic vous rapproche d'une expérience unique. Découvrez des talents méconnus sur twitch, prêts à vous surprendre et à vous divertir comme jamais auparavant. Redéfinissez votre parcours de streaming en découvrant ces trésors cachés !",
+    "title2": " en 2 clics gratuitement !",
+    "explain": "Plongez dans le monde captivant des streamers émergents, où chaque clic vous rapproche de la découverte des streamers de demain. Découvrez les talents méconnus sur Twitch, prêts à vous surprendre et à vous divertir comme jamais auparavant. Redéfinissez votre parcours de streaming en découvrant les streamers de demain !",
     "chooseRoom": "Choisissez la langue de votre salle de streaming préférée pour vous plonger dans l'expérience de streaming.",
     "streamer": "Streamers",
     "viewers": "Viewers",
@@ -12,7 +12,8 @@
     "createdBy": "Crée par ",
     "getStarted": "Explorer les streams",
     "participation": "Être mis en avant !",
-    "textParticipation": "Participez à notre loterie pour avoir la chance d'être mis en avant et faire briller votre talent de streamer !"
+    "textParticipation": "Participez à notre loterie pour avoir la chance d'être mis en avant et faire briller votre talent de streamer !",
+    "support": "Soutien le site !"
   },
   "Participate": {
       "ConnexionText": "Connecte-toi pour pouvoir t'inscrire à la loterie.",
