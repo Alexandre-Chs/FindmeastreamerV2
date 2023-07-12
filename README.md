@@ -1,3 +1,3 @@
-## Findmeastreamer V2
+## Findmeastreamer - The best way to find and promote streamers
 
-Working on the new version of Findmeastreamer ! ( https://findmeastreamer.com ) !
+Join our streaming community now and gain visibility easily and for free! Every hour, we hold a raffle that showcases a streamer. Take the opportunity to discover new talents and support them while having a great time. ( https://findmeastreamer.com ) !
