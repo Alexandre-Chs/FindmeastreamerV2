@@ -1,3 +1,2 @@
-## Findmeastreamer V2
+## Findmeastreamer 
 
-Working on the new version of Findmeastreamer ! ( https://findmeastreamer.com ) !
