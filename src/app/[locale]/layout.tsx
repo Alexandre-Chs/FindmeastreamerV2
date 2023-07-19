@@ -60,11 +60,6 @@ export default async function RootLayout({
       <head>
         <title>{metadataLang[locale].title}</title>
         <meta name="description" content={metadataLang[locale].description} />
-        <script
-          async
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4854700245396979"
-          crossOrigin="anonymous"
-        ></script>
       </head>
       <body className={`${roboto.className} bg-[#17181C] text-white`}>
         <NextIntlClientProvider locale={locale} messages={messages}>
