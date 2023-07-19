@@ -35,10 +35,8 @@ const MainRoom = () => {
                 if (streamerResponse.ok) {
                   const streamerData = await streamerResponse.json();
                   const allUsers = streamerData.user.data;
-                  const randomIndex = Math.floor(
-                    Math.random() * allUsers.length
-                  );
-                  const randomStreamer = allUsers[randomIndex].user_login;
+                  const firstLittleStreamer = allUsers.reverse();
+                  const randomStreamer = firstLittleStreamer[0].user_login;
                   setStreamer(randomStreamer);
                 } else {
                   console.error("Can't get a streamers");
@@ -73,7 +71,6 @@ const MainRoom = () => {
 
     const interval = setInterval(() => {
       checkTime();
-      console.log("check time");
     }, 60000);
 
     return () => clearInterval(interval);
