@@ -72,8 +72,22 @@ const ContentParticipate = () => {
   };
 
   return (
-    <>
+    <div className="mb-10">
       <ToastContainer />
+      <div className="flex items-center justify-center mx-8 mt-8 text-center">
+        <h1 className="max-w-5xl text-lg tracking-normal sm:text-3xl">
+          {t("titleParticipation1")}{" "}
+          <span className="text-[#6441a5]">{t("titleParticipation2")}</span>
+        </h1>
+      </div>
+      <div className="flex flex-col items-center justify-center mx-8 mt-8 mb-10 text-left">
+        <p className="max-w-5xl text-sm font-light tracking-normal sm:text-lg">
+          {t("explain1")}
+        </p>
+        <p className="max-w-5xl mt-2 text-sm font-light tracking-normal sm:mt-4 sm:text-lg">
+          {t("explain2")}
+        </p>
+      </div>
       <div className="flex flex-col items-start justify-center max-w-md m-auto mt-8">
         <div className="h-auto w-[330px] sm:w-[450px] sm:h-[200px] bg-[#8080801a] flex m-auto flex-col sm:flex-row items-center justify-center p-6 rounded-lg">
           <div className="font-bold text-9xl">01</div>
@@ -128,7 +142,7 @@ const ContentParticipate = () => {
         </div>
         {<p className="text-2xl font-bold text-red-600">{error}</p>}
       </div>
-    </>
+    </div>
   );
 };
 

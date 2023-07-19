@@ -2,8 +2,8 @@
   "Home": {
     "login": "Login",
     "title1": "Discover hidden gems in",
-    "title2": " 2 clicks !",
-    "explain": "Dive into the captivating world of emerging streamers, where every click brings you closer to a unique experience. Discover undiscovered talents on Twitch, ready to surprise and entertain you like never before. Redefine your streaming journey by uncovering these hidden gems!",
+    "title2": " in just 2 clicks, for free!",
+    "explain": "Immerse yourself in the captivating world of emerging streamers, where every click brings you closer to discovering the streamers of tomorrow. Uncover unknown talents on Twitch, ready to surprise and entertain you like never before. Redefine your streaming journey by uncovering these future stars!",
     "chooseRoom": "Choose the language of your preferred streaming room to immerse yourself in the streaming experience.",
     "streamer": "Streamers",
     "viewers": "Viewers",
@@ -12,7 +12,8 @@
     "createdBy": "Created by ",
     "getStarted": "Explore streams",
     "participation": "To be highlighted !",
-    "textParticipation": "Participate in our lottery for a chance to be featured and showcase your streaming talent!"
+    "textParticipation": "Participate in our lottery for a chance to be featured and showcase your streaming talent!",
+    "support": "Support the website !"
   },
   "Participate": {
     "ConnexionText": "Log in to be able to sign up for the lottery.",
@@ -23,6 +24,10 @@
     "connexion": "Sign in",
     "successSubmit": "You have just participated with the login:",
     "errorSubmit": "You have already participated for this hour. Try again at the next hour.",
-    "deleteFromBackend": "You just withdrew your participation."
+    "deleteFromBackend": "You just withdrew your participation.",
+    "titleParticipation1": "Join us for a captivating and free experience! Log in through Twitch,",
+    "titleParticipation2": "no credit card is required to participate.",
+    "explain1": "Every hour, try your luck and become a potential winner. Respect the participation languages, as our moderators ensure a friendly atmosphere.",
+    "explain2": "Be online during the draw to maximize your chances of victory. Come and discover an exciting universe and let us surprise you! Have fun !"
   }
 }
